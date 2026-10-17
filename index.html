@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="landing.css" />
+    <script src="landing.js" defer></script>
   </head>
   <body>
     <main class="landing">
@@ -26,11 +27,17 @@
       </header>
 
       <section class="intro" aria-labelledby="welcome-title">
-        <p class="eyebrow"><span></span> DEUX UNIVERS. UNE SEULE DESTINATION.</p>
-        <h1 id="welcome-title">Tout commence<br />par <span>votre choix.</span></h1>
+        <div class="holiday-confetti" id="landing-confetti" aria-hidden="true"></div>
+        <p class="seasonal-label"><span aria-hidden="true">✦</span> OFFRES DE NOËL <span aria-hidden="true">✦</span></p>
+        <div class="holiday-tree" aria-hidden="true">🎄</div>
+        <h1 class="holiday-title" id="welcome-title">
+          <span class="holiday-hat" aria-hidden="true"><span></span></span>
+          OFFRES DE NOËL
+          <span class="holiday-title-subtitle">La magie s’invite chez vous.</span>
+        </h1>
         <p class="intro-copy">
-          Le meilleur du divertissement ou la puissance de la fibre à la maison.
-          Choisissez l’univers à découvrir.
+          Célébrez les fêtes avec le meilleur du divertissement ou la puissance de la fibre.
+          Choisissez votre univers.
         </p>
       </section>
 
