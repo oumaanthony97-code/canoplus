@@ -113,9 +113,46 @@ a {
 }
 
 .intro {
+  position: relative;
+  isolation: isolate;
   max-width: 710px;
-  margin: clamp(3.5rem, 8vh, 6.5rem) auto 3.25rem;
+  margin: clamp(2.75rem, 6vh, 5rem) auto 2.25rem;
   text-align: center;
+}
+
+.seasonal-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.9rem;
+  border: 1px solid rgba(255, 226, 149, 0.31);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  color: #ff5263;
+  background: rgba(255, 222, 139, 0.08);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-shadow: 0 0 16px rgba(255, 56, 77, 0.35);
+}
+
+.seasonal-label span {
+  color: #ffe3a0;
+}
+
+.intro .holiday-tree {
+  margin: 0.05rem 0 0.35rem;
+  font-size: 1.7rem;
+}
+
+.intro .holiday-confetti {
+  z-index: 0;
+  inset: -2rem 0;
+}
+
+.intro > :not(.holiday-confetti) {
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
@@ -404,6 +441,384 @@ a {
   font-style: normal;
 }
 
+.holiday-dialog {
+  position: fixed;
+  width: min(640px, calc(100vw - 32px));
+  max-width: 640px;
+  max-height: min(760px, calc(100dvh - 32px));
+  overflow: auto;
+  border: 1px solid rgba(255, 229, 163, 0.34);
+  border-radius: 26px;
+  padding: 0;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(255, 70, 83, 0.25), transparent 42%),
+    radial-gradient(ellipse at 100% 100%, rgba(10, 154, 86, 0.2), transparent 44%),
+    linear-gradient(145deg, #1b1013, #100e12 58%, #101916);
+  box-shadow: 0 32px 120px rgba(0, 0, 0, 0.72), inset 0 1px rgba(255, 244, 211, 0.12);
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+  transition: opacity 240ms ease, transform 240ms ease, overlay 240ms ease allow-discrete, display 240ms ease allow-discrete;
+}
+
+.holiday-dialog[open] {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.holiday-dialog::backdrop {
+  background: rgba(3, 5, 7, 0.78);
+  backdrop-filter: blur(9px);
+  transition: background 240ms ease;
+}
+
+.holiday-lights {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 8%;
+  left: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f9d56a 13%, #f9d56a 18%, transparent 19%, transparent 31%, #ff6174 32%, #ff6174 37%, transparent 38%, transparent 53%, #62e2a4 54%, #62e2a4 59%, transparent 60%, transparent 75%, #f9d56a 76%, #f9d56a 81%, transparent 82%);
+  box-shadow: 0 0 16px rgba(255, 218, 118, 0.62);
+}
+
+.holiday-confetti {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.holiday-confetti span {
+  position: absolute;
+  top: -12px;
+  left: var(--confetti-left);
+  width: var(--confetti-width);
+  height: var(--confetti-height);
+  border-radius: var(--confetti-radius);
+  background: var(--confetti-color);
+  opacity: 0;
+  animation: holiday-confetti-fall var(--confetti-duration) linear var(--confetti-delay) infinite;
+}
+
+@keyframes holiday-confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translateX(0) rotate(0);
+  }
+
+  10%,
+  85% {
+    opacity: 0.8;
+  }
+
+  100% {
+    top: calc(100% + 14px);
+    opacity: 0;
+    transform: translateX(var(--confetti-drift)) rotate(var(--confetti-spin));
+  }
+}
+
+.holiday-snow {
+  position: absolute;
+  top: 22px;
+  right: 65px;
+  left: 34px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 228, 166, 0.52);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.holiday-snow span:nth-child(2) {
+  color: rgba(135, 243, 193, 0.6);
+}
+
+.holiday-snow span:nth-child(4) {
+  color: rgba(255, 126, 138, 0.65);
+}
+
+.holiday-close {
+  position: absolute;
+  z-index: 1;
+  top: 17px;
+  right: 17px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  font-size: 1.55rem;
+  line-height: 1;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.holiday-close:hover {
+  transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.holiday-close:focus-visible,
+.holiday-dismiss:focus-visible,
+.holiday-offer:focus-visible {
+  outline: 2px solid #ffe69b;
+  outline-offset: 3px;
+}
+
+.holiday-content {
+  padding: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+}
+
+.holiday-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  border: 1px solid rgba(255, 226, 149, 0.31);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  color: #ff5263;
+  background: rgba(255, 222, 139, 0.08);
+  font-size: 0.61rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-shadow: 0 0 16px rgba(255, 56, 77, 0.35);
+}
+
+.holiday-ribbon span {
+  color: #ffe3a0;
+}
+
+.holiday-tree {
+  margin-top: 0.8rem;
+  font-size: 2rem;
+  filter: drop-shadow(0 0 14px rgba(255, 197, 81, 0.32));
+}
+
+.holiday-content h2 {
+  margin: 0.35rem 0 0;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 1.05;
+}
+
+.holiday-title {
+  position: relative;
+  margin: 0;
+  padding-top: 0.2rem;
+  color: #ff4057;
+  font-size: clamp(2.5rem, 6.5vw, 5.1rem);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 1.05;
+  text-shadow: 0 3px 24px rgba(255, 37, 62, 0.28);
+}
+
+.holiday-title .holiday-title-subtitle {
+  display: block;
+  margin-top: 0.3rem;
+  color: #f2cf72;
+  font-size: 0.38em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 24px rgba(230, 176, 56, 0.2);
+}
+
+.holiday-hat {
+  position: absolute;
+  top: -0.65rem;
+  right: 9%;
+  width: 58px;
+  height: 48px;
+  transform: rotate(-18deg);
+}
+
+.holiday-hat::before {
+  position: absolute;
+  right: 6px;
+  bottom: 9px;
+  width: 45px;
+  height: 35px;
+  border-radius: 85% 18% 0 0;
+  background: linear-gradient(145deg, #ff5661, #c50f2b);
+  box-shadow: inset 3px 3px 5px rgba(255, 255, 255, 0.25);
+  content: "";
+}
+
+.holiday-hat::after {
+  position: absolute;
+  right: 1px;
+  bottom: 4px;
+  width: 54px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff, #d9d9e2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  content: "";
+}
+
+.holiday-hat span {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.holiday-intro {
+  margin: 0.8rem 0 1.65rem;
+  color: #c0b9ba;
+  font-size: 0.92rem;
+}
+
+.holiday-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  text-align: left;
+}
+
+.holiday-offer {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 17px;
+  padding: 1rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.holiday-offer:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 220, 132, 0.62);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.045));
+}
+
+.holiday-offer-icon {
+  display: grid;
+  width: 37px;
+  height: 37px;
+  place-items: center;
+  border: 1px solid rgba(255, 116, 128, 0.36);
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(145deg, #e93648, #a51b32);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.holiday-offer-icon span {
+  color: #ffdc83;
+}
+
+.holiday-offer-box .holiday-offer-icon {
+  border-color: rgba(115, 236, 183, 0.3);
+  color: #a2ffd4;
+  background: linear-gradient(145deg, #087c59, #07513e);
+  font-size: 1.7rem;
+}
+
+.holiday-offer-name {
+  margin-top: 0.8rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+}
+
+.holiday-offer-detail {
+  margin-top: 0.25rem;
+  color: #aaa5aa;
+  font-size: 0.72rem;
+}
+
+.holiday-offer-price {
+  margin-top: 0.9rem;
+  color: #ffe29a;
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+
+.holiday-offer-price small {
+  color: #c0b9ba;
+  font-size: 0.69rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.holiday-offer-link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 0.75rem;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.holiday-offer-link span {
+  color: #ff7781;
+  font-size: 1rem;
+  transition: transform 160ms ease;
+}
+
+.holiday-offer-box .holiday-offer-link span {
+  color: #79e8b9;
+}
+
+.holiday-offer:hover .holiday-offer-link span {
+  transform: translateX(4px);
+}
+
+.holiday-note {
+  max-width: 420px;
+  margin: 1rem auto 0;
+  color: #969198;
+  font-size: 0.65rem;
+  line-height: 1.6;
+}
+
+.holiday-dismiss {
+  margin-top: 1.1rem;
+  border: 0;
+  padding: 0.6rem 0.8rem;
+  color: #d3cdd0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.holiday-dismiss:hover {
+  color: #fff;
+}
+
+@starting-style {
+  .holiday-dialog[open] {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}
+
 @media (min-width: 1440px) {
   .choices {
     max-width: 1250px;
@@ -429,11 +844,11 @@ a {
   }
 
   .intro {
-    margin: 3.4rem auto 2rem;
+    margin: 2.4rem auto 1.5rem;
   }
 
-  .intro h1 {
-    font-size: clamp(3rem, 12vw, 4.4rem);
+  .intro .holiday-title {
+    font-size: clamp(2.1rem, 9vw, 3.5rem);
   }
 
   .intro-copy {
@@ -475,9 +890,78 @@ a {
     padding-top: 1.5rem;
     font-size: 0.48rem;
   }
+
+  .intro .holiday-hat {
+    right: 3%;
+    width: 43px;
+    height: 36px;
+  }
+
+  .intro .holiday-hat::before {
+    right: 4px;
+    bottom: 7px;
+    width: 34px;
+    height: 27px;
+  }
+
+  .intro .holiday-hat::after {
+    right: 0;
+    bottom: 3px;
+    width: 41px;
+    height: 9px;
+  }
+
+  .intro .holiday-hat span {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+@media (max-height: 700px) {
+  .holiday-content {
+    padding-top: 1.75rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .holiday-tree {
+    margin-top: 0.35rem;
+    font-size: 1.5rem;
+  }
+
+  .holiday-content h2 {
+    font-size: clamp(1.8rem, 5vw, 2.7rem);
+  }
+
+  .holiday-intro {
+    margin: 0.5rem 0 1rem;
+  }
+
+  .holiday-offer {
+    padding: 0.8rem;
+  }
+
+  .holiday-offer-price {
+    margin-top: 0.6rem;
+  }
+
+  .holiday-offer-link {
+    margin-top: 0.6rem;
+  }
+
+  .holiday-note {
+    margin-top: 0.7rem;
+  }
+
+  .holiday-dismiss {
+    margin-top: 0.5rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .holiday-confetti span {
+    display: none;
+  }
+
   *,
   *::before,
   *::after {
