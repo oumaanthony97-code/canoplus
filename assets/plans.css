@@ -1,0 +1,248 @@
+.plans-section {
+  position: relative;
+  isolation: isolate;
+  max-width: 1600px;
+  margin: 1rem auto 3.5rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(229, 9, 20, 0.13), transparent 52%),
+    linear-gradient(145deg, #111113, #080809 68%);
+}
+
+.plans-heading {
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.plans-eyebrow {
+  margin: 0 0 0.75rem;
+  color: #ff626b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.plans-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.plans-intro {
+  margin: 0.9rem 0 0;
+  color: #a1a1aa;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.plan-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 1.6rem 1.4rem 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  background: linear-gradient(155deg, rgba(33, 33, 37, 0.94), rgba(17, 17, 19, 0.98) 70%);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.plan-card[role="button"] {
+  cursor: pointer;
+}
+
+.plan-card[role="button"]:focus-visible {
+  outline: 2px solid #ff626b;
+  outline-offset: 3px;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.23);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+}
+
+.plan-choose {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  color: #ff858c;
+  font-size: 0.78rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.plan-card:hover .plan-choose,
+.plan-card:focus-visible .plan-choose {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plan-card-featured {
+  border-color: rgba(255, 57, 69, 0.7);
+  background:
+    radial-gradient(ellipse at 100% 0, rgba(229, 9, 20, 0.19), transparent 58%),
+    linear-gradient(155deg, #252023, #121113 72%);
+  box-shadow: inset 0 0 0 1px rgba(229, 9, 20, 0.12), 0 16px 42px rgba(120, 0, 8, 0.14);
+}
+
+.plan-card-featured:hover {
+  border-color: #ff626b;
+}
+
+.plan-badge {
+  align-self: flex-start;
+  margin: -0.15rem 0 1.25rem;
+  padding: 0.38rem 0.65rem;
+  border: 1px solid rgba(255, 98, 107, 0.28);
+  border-radius: 999px;
+  background: rgba(229, 9, 20, 0.13);
+  color: #ff9299;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.plan-name {
+  min-height: 2.8em;
+  margin: 0;
+  color: #f4f4f5;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  margin: 0.65rem 0 0;
+  color: #fff;
+  font-size: clamp(2.2rem, 3.4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.plan-currency {
+  align-self: flex-start;
+  padding-top: 0.28rem;
+  color: #ff626b;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+}
+
+.plan-period {
+  margin-left: 0.25rem;
+  color: #92929b;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.plan-rule {
+  width: 2.6rem;
+  height: 2px;
+  margin: 1.4rem 0 1rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #e50914, rgba(229, 9, 20, 0.12));
+}
+
+.plan-description {
+  margin: 0;
+  color: #b0b0b8;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.plans-note {
+  max-width: 780px;
+  margin: 1.5rem auto 0;
+  color: #777780;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .plans-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plan-price {
+    font-size: clamp(2.4rem, 5vw, 3rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .plans-section {
+    margin: 0.25rem 1rem 2.5rem;
+    padding: 2rem 1rem 1.5rem;
+    border-radius: 22px;
+  }
+
+  .plans-heading {
+    margin-bottom: 1.6rem;
+    text-align: left;
+  }
+
+  .plans-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .plan-card {
+    padding: 1.3rem 1.2rem;
+  }
+
+  .plan-choose {
+    padding-top: 0.9rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .plan-name {
+    min-height: 0;
+  }
+
+  .plan-price {
+    margin-top: 0.8rem;
+    font-size: 2.7rem;
+  }
+
+  .plan-rule {
+    margin: 1.1rem 0 0.8rem;
+  }
+
+  .plans-note {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan-card {
+    transition: none;
+  }
+
+  .plan-card:hover {
+    transform: none;
+  }
+}
