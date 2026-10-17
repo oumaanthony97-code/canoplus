@@ -3,18 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PrimeTV — Streaming Premium · Sport, Cinéma, Séries</title>
-    <meta property="og:image" content="assets/og_default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="assets/og_default.png" />
+    <meta name="theme-color" content="#08090c" />
+    <meta
+      name="description"
+      content="Choisissez votre univers : CANAL+ pour le sport, le cinéma et les séries, ou Canalbox pour la fibre à la maison."
+    />
+    <title>CANAL+ & Canalbox — Choisissez votre univers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/plans.css" />
-    <script type="module" crossorigin src="assets/index-NteebrMr.js"></script>
-    <link rel="stylesheet" crossorigin href="assets/index-Di2Sc8j5.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="landing.css" />
   </head>
   <body>
-    <div id="root"></div>
+    <main class="landing">
+      <header class="topbar">
+        <a class="wordmark" href="./" aria-label="Accueil">C<span>+</span></a>
+        <p class="topbar-note">VOTRE UNIVERS, VOTRE CHOIX</p>
+        <span class="region"><span class="region-dot"></span> RÉPUBLIQUE DÉMOCRATIQUE DU CONGO</span>
+      </header>
+
+      <section class="intro" aria-labelledby="welcome-title">
+        <p class="eyebrow"><span></span> DEUX UNIVERS. UNE SEULE DESTINATION.</p>
+        <h1 id="welcome-title">Tout commence<br />par <span>votre choix.</span></h1>
+        <p class="intro-copy">
+          Le meilleur du divertissement ou la puissance de la fibre à la maison.
+          Choisissez l’univers à découvrir.
+        </p>
+      </section>
+
+      <section class="choices" aria-label="Choisir un univers">
+        <a class="choice choice-canal" href="canalplus.html">
+          <span class="choice-glow" aria-hidden="true"></span>
+          <span class="choice-top">
+            <span class="choice-index">01 <span>— DIVERTISSEMENT</span></span>
+            <span class="choice-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="canal-emblem" aria-hidden="true">C<span>+</span></span>
+          <span class="choice-copy">
+            <span class="choice-kicker">SPORT · CINÉMA · SÉRIES</span>
+            <span class="choice-title">CANAL<span class="canal-plus">+</span></span>
+            <span class="choice-description">
+              Retrouvez vos programmes préférés, du grand sport aux plus belles histoires.
+            </span>
+          </span>
+          <span class="choice-action">DÉCOUVRIR CANAL+ <span aria-hidden="true">→</span></span>
+        </a>
+
+        <a class="choice choice-box" href="canolbox/index.html">
+          <span class="choice-glow" aria-hidden="true"></span>
+          <span class="choice-top">
+            <span class="choice-index">02 <span>— INTERNET FIBRE</span></span>
+            <span class="choice-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="fiber-art" aria-hidden="true">
+            <span class="fiber-ring fiber-ring-one"></span>
+            <span class="fiber-ring fiber-ring-two"></span>
+            <span class="fiber-core"><span></span><span></span><span></span></span>
+            <span class="fiber-label">LA FIBRE<br />À LA MAISON</span>
+          </span>
+          <span class="choice-copy">
+            <span class="choice-kicker">RAPIDE · STABLE · ILLIMITÉ</span>
+            <span class="choice-title">CANALBOX</span>
+            <span class="choice-description">
+              Découvrez les offres fibre et profitez d’une connexion pensée pour toute la maison.
+            </span>
+          </span>
+          <span class="choice-action">DÉCOUVRIR CANALBOX <span aria-hidden="true">→</span></span>
+        </a>
+      </section>
+
+      <footer class="landing-footer">
+        <span>VOS ENVIES, SANS COMPROMIS.</span>
+        <span>CANAL+ <i>×</i> CANALBOX</span>
+      </footer>
+    </main>
   </body>
 </html>
