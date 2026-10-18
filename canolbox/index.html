@@ -79,7 +79,7 @@
       </section>
 
       <section class="plans" id="offres" aria-label="Les offres Canalbox">
-        <a class="plan plan-eyano" href="https://canonairtel.onrender.com">
+        <a class="plan plan-eyano" href="https://canonairtel.onrender.com" data-plan-name="Eyano" data-plan-price="3 $/mois">
           <div class="plan-card">
             <h2><span>Offre</span>Eyano</h2>
             <p>Je découvre l’univers de la fibre</p>
@@ -88,7 +88,7 @@
             <span class="plan-plus" aria-hidden="true">+</span>
           </div>
         </a>
-        <a class="plan plan-start" href="https://canonairtel.onrender.com">
+        <a class="plan plan-start" href="https://canonairtel.onrender.com" data-plan-name="Start" data-plan-price="6 $/mois">
           <div class="plan-card">
             <h2><span>Offre</span>Start</h2>
             <p>J’entre dans l’univers du très haut débit</p>
@@ -97,7 +97,7 @@
             <span class="plan-plus" aria-hidden="true">+</span>
           </div>
         </a>
-        <a class="plan plan-premium" href="https://canonairtel.onrender.com">
+        <a class="plan plan-premium" href="https://canonairtel.onrender.com" data-plan-name="Premium" data-plan-price="10 $/mois">
           <div class="plan-card">
             <h2><span>Offre</span>Premium</h2>
             <p>La puissance version fibre</p>
@@ -111,6 +111,44 @@
         Prix indicatifs ajustés proportionnellement pour plafonner l’offre affichée à 10&nbsp;$.
         Tarifs non officiels : vérifiez les prix auprès de Canalbox RDC.
       </p>
+
+      <dialog class="checkout-dialog" aria-labelledby="checkout-title">
+        <form class="checkout-card">
+          <header class="checkout-header">
+            <div>
+              <p class="checkout-eyebrow">Votre formule</p>
+              <h2 id="checkout-title">Canalbox</h2>
+            </div>
+            <button class="checkout-close" type="button" aria-label="Fermer">×</button>
+          </header>
+          <div class="checkout-content">
+            <label class="decoder-label" for="decoder-number">Numéro du décodeur</label>
+            <input
+              class="decoder-input"
+              id="decoder-number"
+              name="decoder-number"
+              type="text"
+              autocomplete="off"
+              placeholder="Entrez votre numéro de décodeur"
+              required
+            />
+            <p class="decoder-hint">Vous pouvez saisir des lettres et des chiffres.</p>
+            <div class="checkout-plan">
+              <div>
+                <p>Forfait sélectionné</p>
+                <strong class="checkout-plan-name"></strong>
+              </div>
+              <strong class="checkout-plan-price"></strong>
+            </div>
+            <div class="checkout-payment">
+              <p>Payez avec</p>
+              <button class="airtel-option" type="submit"><span aria-hidden="true">A</span> Airtel Money</button>
+            </div>
+            <button class="checkout-proceed" type="submit">Procéder maintenant <span aria-hidden="true">→</span></button>
+            <p class="checkout-note">Vous serez redirigé vers la page de paiement Airtel Money. Votre numéro de décodeur et le forfait ne sont pas transmis automatiquement.</p>
+          </div>
+        </form>
+      </dialog>
 
       <section class="fiber" id="avantages">
         <div class="fiber-heading">
