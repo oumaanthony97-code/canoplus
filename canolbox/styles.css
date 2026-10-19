@@ -562,6 +562,7 @@ button {
 
 .airtel-option {
   display: flex;
+  width: 100%;
   min-height: 52px;
   align-items: center;
   justify-content: center;
@@ -576,9 +577,36 @@ button {
   font-weight: 800;
 }
 
+.checkout-payment .airtel-option {
+  margin-top: 0;
+}
+
 .airtel-option:hover {
   border-color: #e50914;
   background: #e509142e;
+}
+
+.orange-option {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 9px;
+  border: 1px solid #ff790073;
+  border-radius: 12px;
+  background: #ff79001a;
+  color: var(--white);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.orange-option:hover {
+  border-color: #ff7900;
+  background: #ff790033;
 }
 
 .airtel-option span {
@@ -588,6 +616,17 @@ button {
   place-items: center;
   border-radius: 50%;
   background: #e50914;
+  color: white;
+  font-size: 11px;
+}
+
+.orange-option span {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border-radius: 50%;
+  background: #ff7900;
   color: white;
   font-size: 11px;
 }
