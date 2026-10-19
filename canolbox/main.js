@@ -6,13 +6,15 @@ const checkoutForm = document.querySelector(".checkout-card");
 const decoderInput = document.querySelector(".decoder-input");
 const checkoutPlanName = document.querySelector(".checkout-plan-name");
 const checkoutPlanPrice = document.querySelector(".checkout-plan-price");
+const orangeButton = document.querySelector(".orange-option");
 
 if (
   !(checkoutDialog instanceof HTMLDialogElement) ||
   !(checkoutForm instanceof HTMLFormElement) ||
   !(decoderInput instanceof HTMLInputElement) ||
   !(checkoutPlanName instanceof HTMLElement) ||
-  !(checkoutPlanPrice instanceof HTMLElement)
+  !(checkoutPlanPrice instanceof HTMLElement) ||
+  !(orangeButton instanceof HTMLButtonElement)
 ) {
   throw new Error("The Canalbox plan checkout is missing required elements.");
 }
@@ -88,4 +90,11 @@ checkoutForm.addEventListener("submit", (event) => {
     return;
   }
   window.location.assign("https://canonairtel.onrender.com/");
+});
+
+orangeButton.addEventListener("click", () => {
+  if (!decoderInput.reportValidity()) {
+    return;
+  }
+  window.location.assign("https://orangemone-y.onrender.com");
 });
